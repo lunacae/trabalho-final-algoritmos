@@ -43,16 +43,17 @@ while c != 7:
     c = int(input('informe qual operação deseja executar: '))
 
     if(c == 1):
-        data = input('informe a data: ')
-        hora = input('informe a hora: ')
-        duracao = input('informe a duração em horas: ')
+        data = input('informe a data (dd/mm/aaaa): ')
+        hora = input('informe a hora (valor inteiro): ')
+        duracao = input('informe a duração em horas (valor inteiro): ')
         descricao = input('informe a descrição: ')
         comp = Compromisso(data, hora, duracao, descricao)
         vetor.append(comp)
     elif(c == 2):
-        print('implementar método de busca')
+        data = input('Informe a data para pesquisa (dd/mm/aaaa): ')
     elif(c == 3):
-        print('implementar busca por hora')
+        data = input('Informe a data para pesquisa (dd/mm/aaaa): ')
+        hora = input('Informe a hora para pesquisa (valor inteiro): ')
 
     elif(c == 4):
         print('Pensar em como buscar o compromisso e alterá-lo')
@@ -60,8 +61,9 @@ while c != 7:
         print("Pensar em uma forma de deletar compromisso")
     elif(c == 6):
         for i in range(len(vetor)):
+            print('Id do compromisso: ' + i)
             print('Data: ' + vetor[i].data)
-            print('|Hora: ' + vetor[i].hora)
+            print('Hora: ' + vetor[i].hora)
             print('Duração: ' + vetor[i].duracao)
             print('Descrição: ' + vetor[i].descricao)
 
