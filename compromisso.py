@@ -78,18 +78,7 @@ def adicionaCompromisso():
     comp = Compromisso(data, hora, duracao, descricao)
     return comp
 
-vetor = []
-c = 0
-while c != 7:
-    print('\n1 - Incluir compromisso')
-    print('2 - Consultar compromisso por data')
-    print('3 - Consultar compromisso por hora e data')
-    print('4 - Alterar compromisso')
-    print('5 - Excluir compromisso')
-    print('6 - Listar todos os compromissos')
-    print('7 - Sair')
-    c = int(input('informe qual operação deseja executar: '))
-
+def processaSolicitacao(c):
     if(c == 1):
         vetor.append(adicionaCompromisso())
         print('Compromisso adicionado com sucesso!')
@@ -127,5 +116,19 @@ while c != 7:
             listarCompromissos(vetor)
         else:
             print('Nenhum compromisso foi adicionado ainda \n')
+
+vetor = []
+c = 0
+while c != 7:
+    print('\n1 - Incluir compromisso')
+    print('2 - Consultar compromisso por data')
+    print('3 - Consultar compromisso por hora e data')
+    print('4 - Alterar compromisso')
+    print('5 - Excluir compromisso')
+    print('6 - Listar todos os compromissos')
+    print('7 - Sair')
+    c = int(input('informe qual operação deseja executar: '))
+
+    processaSolicitacao(c)
 
 print('Programa finalizado')
