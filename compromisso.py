@@ -58,8 +58,11 @@ def listarCompromissosPorData(vetor, data):
             listarCompromisso(vetor[i])
 
 def deletarPorId(vetor, id):
-    vetor.pop(id)
-    print("Compromisso removido!")
+    if(len(vetor) >= id+1):
+        vetor.pop(id)
+        print("Compromisso removido!")
+    else:
+        print('O id informado não existe')
 
 def listarCompromissosPorDataeHora(vetor, data, hora):
     for i in range(len(vetor)):
@@ -89,22 +92,31 @@ while c != 7:
 
     if(c == 1):
         vetor.append(adicionaCompromisso())
+        print('Compromisso adicionado com sucesso!')
 
     elif(c == 2):
         data = input('Informe a data para pesquisa (dd/mm/aaaa): ')
         listarCompromissosPorData(vetor, data)
+        print('Fim da pesquisa')
+
     elif(c == 3):
         data = input('Informe a data para pesquisa (dd/mm/aaaa): ')
         hora = input('Informe a hora para pesquisa (valor inteiro): ')
         listarCompromissosPorDataeHora(vetor, data, hora)
+        print('Fim da pesquisa')
 
     elif(c == 4):
+        
         id = int(input('Informe o ID do compromisso para alterá-lo, para consultar o id selecione \"listar todos\" ou pesquise pelo compromisso por data / hora: '))
-        data = input('informe a nova data (dd/mm/aaaa): ')
-        hora = input('informe a nova hora (valor inteiro): ')
-        duracao = input('informe a duração em horas (valor inteiro): ')
-        descricao = input('informe a descrição: ')
-        vetor[id].atualizaCompromisso(data,hora,duracao,descricao)
+        if(len(vetor) >= id+1):
+            data = input('informe a nova data (dd/mm/aaaa): ')
+            hora = input('informe a nova hora (valor inteiro): ')
+            duracao = input('informe a duração em horas (valor inteiro): ')
+            descricao = input('informe a descrição: ')
+            vetor[id].atualizaCompromisso(data,hora,duracao,descricao)
+            print('Compromisso atualizado com sucesso')
+        else:
+            print('O id informado não existe')
 
     elif(c == 5):
         id = int(input('Informe o ID do compromisso para deletá-lo, para consultar o id selecione \"listar todos\" ou pesquise pelo compromisso por data / hora: '))
