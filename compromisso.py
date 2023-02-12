@@ -57,20 +57,23 @@ def listarCompromissosPorData(vetor, data):
             print('Id do compromisso: ', i)
             listarCompromisso(vetor[i])
 
+def deletarPorId(vetor, id):
+    vetor.pop(id)
+    print("Compromisso removido!")
+
 def listarCompromissosPorDataeHora(vetor, data, hora):
     for i in range(len(vetor)):
         if(vetor[i].data == data and vetor[i].hora == hora):
             print('Id do compromisso: ', i)
             listarCompromisso(vetor[i])
 
-def adicionaCompromisso(vetor):
+def adicionaCompromisso():
     data = input('informe a data (dd/mm/aaaa): ')
     hora = input('informe a hora (valor inteiro): ')
     duracao = input('informe a duração em horas (valor inteiro): ')
     descricao = input('informe a descrição: ')
     comp = Compromisso(data, hora, duracao, descricao)
-    vetor.append(comp)
-    return vetor
+    return comp
 
 vetor = []
 c = 0
@@ -85,7 +88,7 @@ while c != 7:
     c = int(input('informe qual operação deseja executar: '))
 
     if(c == 1):
-        vetor = adicionaCompromisso(vetor)
+        vetor.append(adicionaCompromisso())
 
     elif(c == 2):
         data = input('Informe a data para pesquisa (dd/mm/aaaa): ')
@@ -104,7 +107,9 @@ while c != 7:
         vetor[id].atualizaCompromisso(data,hora,duracao,descricao)
 
     elif(c == 5):
-        print("Pensar em uma forma de deletar compromisso")
+        id = int(input('Informe o ID do compromisso para deletá-lo, para consultar o id selecione \"listar todos\" ou pesquise pelo compromisso por data / hora: '))
+        deletarPorId(vetor,id)
+        
     elif(c == 6):
         if(len(vetor) > 0):
             listarCompromissos(vetor)
