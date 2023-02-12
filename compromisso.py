@@ -29,6 +29,12 @@ class Compromisso:
 
     def getDescricao(self):
         return self.descricao
+    
+    def atualizaCompromisso(self, data, hora, duracao, descricao):
+        self.setData(data)
+        self.setHora(hora)
+        self.setDuracao(duracao)
+        self.setDescricao(descricao)
 
 def listarCompromisso(compromisso):
     print('Data: ' + compromisso.data)
@@ -90,7 +96,13 @@ while c != 7:
         listarCompromissosPorDataeHora(vetor, data, hora)
 
     elif(c == 4):
-        print('Pensar em como buscar o compromisso e alterá-lo')
+        id = int(input('Informe o ID do compromisso para alterá-lo, para consultar o id selecione \"listar todos\" ou pesquise pelo compromisso por data / hora: '))
+        data = input('informe a nova data (dd/mm/aaaa): ')
+        hora = input('informe a nova hora (valor inteiro): ')
+        duracao = input('informe a duração em horas (valor inteiro): ')
+        descricao = input('informe a descrição: ')
+        vetor[id].atualizaCompromisso(data,hora,duracao,descricao)
+
     elif(c == 5):
         print("Pensar em uma forma de deletar compromisso")
     elif(c == 6):
